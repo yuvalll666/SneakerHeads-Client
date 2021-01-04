@@ -76,7 +76,7 @@ function Home() {
       >
         {/* stripe image */}
       </div>
-      <div className="container">
+      <div className="container bg-dark">
         <PopularBrands />
 
         <div className="row mt-4">

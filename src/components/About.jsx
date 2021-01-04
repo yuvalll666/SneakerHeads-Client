@@ -8,7 +8,7 @@ function About() {
       <div className="d-sm-block d-md-block d-lg-none">
         <PageHeader>Who We Are ?</PageHeader>
       </div>
-      <div className="page-header d-none d-sm-none d-md-none d-lg-block">
+      <div className="gogo page-header d-none d-sm-none d-md-none d-lg-block">
         <div className="container">
           <div className="row">
             <div className="col-6 text-container">
