@@ -17,6 +17,7 @@ import { localUrl, apiUrl } from "../config.json";
 const useStyles = makeStyles((them) => ({
   topImage: {
     backgroundImage: `url("${localUrl}/images/pexels-ray-piedra-1503009.jpg");`,
+    width: "100%",
   },
 }));
 
