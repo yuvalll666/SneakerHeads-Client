@@ -74,7 +74,7 @@ function App() {
             <Route path="/brands/nike" component={Nike} />
             <Route path="/brands/yeezy" component={Yeezy} />
             <Route path="/brands/adidas" component={Adidas} />
-            <Route path="/confirmation" component={Confirmation} />
+            <Route path="/confirmation/:token" component={Confirmation} />
             <DeletedUserProvider>
               <UserContext.Provider value={user}>
                 <Route path="/products/:productId" component={ProductPage} />

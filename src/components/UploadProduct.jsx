@@ -14,7 +14,10 @@ import { CloudUploadOutlined } from "@material-ui/icons";
 import PageHeader from "./utils/PageHeader";
 import { brands } from "../datas";
 import { useToasts } from "react-toast-notifications";
-import { apiUrl } from "../config.json";
+import { apiUrl, userRole } from "../config.json";
+import { Redirect } from "react-router-dom";
+
+const { NORMAL } = userRole;
 
 const useStyles = makeStyles((them) => ({
   root: {
@@ -34,12 +37,9 @@ function UploadProduct() {
   const [Chips, setChips] = useState([]);
   const [Images, setImages] = useState(null);
 
- 
-
   const { register, handleSubmit } = useForm({
     mode: "onBlur",
   });
-
   /**
    * Set the state of Images to a new one
    * @param {Array.<String>} newImages - Array of images sources
@@ -65,7 +65,7 @@ function UploadProduct() {
         appearance: "error",
       });
     }
-    console.log(Images)
+    console.log(Images);
     /**
      * ProductInfo object
      * @type {{
@@ -110,6 +110,9 @@ function UploadProduct() {
     setChips(chips);
   };
 
+  if (user && user.role === NORMAL) {
+    return <Redirect to="/" />;
+  }
   return (
     <div>
       <PageHeader>
