@@ -32,7 +32,9 @@ function UploadProduct() {
   const styles = useStyles();
   const history = useHistory();
   const [Chips, setChips] = useState([]);
-  const [Images, setImages] = useState([]);
+  const [Images, setImages] = useState(null);
+
+ 
 
   const { register, handleSubmit } = useForm({
     mode: "onBlur",
@@ -52,12 +54,18 @@ function UploadProduct() {
    */
   const onSubmit = async (data) => {
     const { title, description, price, brand } = data;
+    if (Images.length === 0) {
+      setImages(null);
+      return addToast("Product most contain an image", {
+        appearance: "error",
+      });
+    }
     if (!title || !description || !price || !brand || !Images) {
       return addToast("Please fill all of the fields first!", {
         appearance: "error",
       });
     }
-
+    console.log(Images)
     /**
      * ProductInfo object
      * @type {{
@@ -78,7 +86,7 @@ function UploadProduct() {
     };
 
     try {
-      await http.post(`${apiUrl}/uploadProduct`, productInfo);
+      await http.post(`${apiUrl}/products/uploadProduct`, productInfo);
       addToast("Product uploaded successfuly", {
         appearance: "success",
       });

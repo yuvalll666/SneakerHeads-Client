@@ -56,7 +56,7 @@ function CartTable({ ProductsInfo, removeFromCart }) {
   const renderCartImage = (images) => {
     if (images.length > 0) {
       let image = images[0];
-      return `${localUrl}/${image}`;
+      return image;
     }
   };
 

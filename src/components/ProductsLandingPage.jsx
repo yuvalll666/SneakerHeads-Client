@@ -16,8 +16,7 @@ import { localUrl, apiUrl } from "../config.json";
 
 const useStyles = makeStyles((them) => ({
   topImage: {
-    backgroundImage: `url("www.sneaker-heads.netlify.app//images/pexels-ray-piedra-1503009.jpg");`,
-    width: "100%",
+    backgroundImage: `url('/images/landingPageTopImage.jpg');`,
   },
 }));
 

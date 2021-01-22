@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import ImageGallery from "react-image-gallery";
-import { localUrl } from "../../config.json";
 
 /**
  * Component - ProductCarousel
@@ -21,10 +20,9 @@ function ProductCarousel(props) {
       let images = [];
       // Create array of image Objects
       product.images.map((item) => {
-        let url = localUrl;
         images.push({
-          original: `${url}/${item}`,
-          thumbnail: `${url}/${item}`,
+          original: item,
+          thumbnail: item,
         });
       });
 

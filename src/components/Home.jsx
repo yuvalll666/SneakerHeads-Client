@@ -29,6 +29,7 @@ function Home() {
    * On page load send request to server to get most viewed products list
    */
   useEffect(() => {
+   
     const limit = 8;
     http.post(`${apiUrl}/products/getMostViews`, { limit }).then((response) => {
       if (response.data.success) {

@@ -35,7 +35,7 @@ function UpdateProduct(props) {
   const styles = useStyles();
   const history = useHistory();
   const [Chips, setChips] = useState([]);
-  const [images, setImages] = useState([]);
+  const [images, setImages] = useState(null);
   const [Product, setProduct] = useState({});
 
   /**
@@ -73,19 +73,26 @@ function UpdateProduct(props) {
     setImages(newImages);
   };
 
+
   /**
    * Send request to server to update existing product
    * @param {Object} data - Values gathered by usForm hook from the inputs
    */
   const onSubmit = async (data) => {
     const { title, description, price, brand } = data;
+    if (images.length === 0) {
+      setImages(null);
+      return addToast("Product most contain an image", {
+        appearance: "error",
+      });
+    }
     // If either one not exists, bail
     if (!title || !description || !price || isNaN(brand) || !images) {
       return addToast("Please fill all of the fields first!", {
         appearance: "error",
       });
     }
-
+    
     /**
      * ProductInfo object
      * @type {{
@@ -158,7 +165,11 @@ function UpdateProduct(props) {
       </PageHeader>
 
       <Form onSubmit={handleSubmit(onSubmit)}>
-        <FileUpload oldImages={images} refreshFunction={updateImages} />
+        <FileUpload
+          oldImages={images}
+          updateImages={updateImages}
+          productId={productId}
+        />
         <MainContainer className={styles.root} maxWidth="sm">
           <input
             defaultValue={Product.title}

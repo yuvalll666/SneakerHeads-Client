@@ -48,7 +48,7 @@ function HandleProductsPage() {
   const styles = useStyles();
   const user = useContext(UserContext);
   const [Products, setProducts] = useState([]);
-  const [DeletedProduct, setDeletedProduct] = useState({});
+  // const [DeletedProduct, setDeletedProduct] = useState({});
   const { addToast } = useToasts();
 
   /**
@@ -78,7 +78,7 @@ function HandleProductsPage() {
     // If 1 or more items get in
     if (images.length > 0) {
       let image = images[0];
-      return `${localUrl}/${image}`;
+      return image;
     }
   };
 
@@ -147,7 +147,7 @@ function HandleProductsPage() {
           // Remove product from the array
           Products.splice(indexId, 1);
           // Save deleted product information Object
-          setDeletedProduct(response.data);
+          // setDeletedProduct(response.data);
           addToast("Product deleted successfully", { appearance: "success" });
         })
         .catch((error) => {
@@ -155,29 +155,29 @@ function HandleProductsPage() {
         });
     }
   };
-  /**
-   * Restore last deleted product
-   * @param {Object} DeletedProduct - Last deleted product information
-   */
-  const undoDelete = (DeletedProduct) => {
-    // Send request to server
-    http
-      .post(`${apiUrl}/admin/handle-products/undoDelete`, DeletedProduct)
-      .then((response) => {
-        let product = response.data;
-        addToast("Product restored successfully", {
-          appearance: "success",
-        });
-        setDeletedProduct(false);
-        // Add restored product to Products array
-        setProducts([...Products, product]);
-        // Move to HandleProducts page
-        window.location = "/handle-products";
-      })
-      .catch((error) => {
-        addToast("Error: Could't restore Product", { appearance: "error" });
-      });
-  };
+  // /**
+  //  * Restore last deleted product
+  //  * @param {Object} DeletedProduct - Last deleted product information
+  //  */
+  // const undoDelete = (DeletedProduct) => {
+  //   // Send request to server
+  //   http
+  //     .post(`${apiUrl}/admin/handle-products/undoDelete`, DeletedProduct)
+  //     .then((response) => {
+  //       let product = response.data;
+  //       addToast("Product restored successfully", {
+  //         appearance: "success",
+  //       });
+  //       setDeletedProduct(false);
+  //       // Add restored product to Products array
+  //       setProducts([...Products, product]);
+  //       // Move to HandleProducts page
+  //       window.location = "/handle-products";
+  //     })
+  //     .catch((error) => {
+  //       addToast("Error: Could't restore Product", { appearance: "error" });
+  //     });
+  // };
 
   /**
    * Filter results by brand
@@ -231,11 +231,11 @@ function HandleProductsPage() {
 
           {buttons}
         </div>
-        {DeletedProduct && DeletedProduct._id && (
+        {/* {DeletedProduct && DeletedProduct._id && (
           <Link to="#" onClick={() => undoDelete(DeletedProduct)}>
             <i className="fas fa-exclamation-circle"></i>Undo Delete
           </Link>
-        )}
+        )} */}
         <TableContainer component={Paper}>
           <Table>
             <TableHead>
