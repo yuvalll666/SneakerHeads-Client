@@ -50,7 +50,7 @@ function ProductInfo(props) {
               <i className="fas fa-plus mr-2"></i> Add to cart
             </Button>
             <Button
-              onClick={() => addToCart(product._id)}
+              onClick={() => addToCart(product._id, 'buyNow')}
               className="mt-2"
               variant="contained"
               color="primary"

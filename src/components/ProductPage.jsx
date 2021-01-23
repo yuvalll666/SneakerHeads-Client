@@ -35,7 +35,7 @@ const ProductPage = (props) => {
    * Send request to server to add a product to the cart
    * @param {String} productId - product id number
    */
-  const addToCartHandler = async (productId) => {
+  const addToCartHandler = async (productId, buy = null) => {
     if (!user) {
       return swal
         .fire({
@@ -59,6 +59,11 @@ const ProductPage = (props) => {
       .then((response) => {
         // Replace user's JWT token to new one in local storage
         localStorage.setItem("token", response.data.token);
+
+        if(buy) {
+          window.location ="/cart"
+        }
+
         swal
           .fire({
             title: "Successfully Added To Your Cart",
