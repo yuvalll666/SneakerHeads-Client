@@ -4,12 +4,13 @@ import http from "../services/httpService";
 import { Col, Row, Card } from "antd";
 import Meta from "antd/lib/card/Meta";
 import { Link } from "react-router-dom";
-import { Typography, makeStyles } from "@material-ui/core";
+import { Typography, makeStyles, CircularProgress } from "@material-ui/core";
 import ImageSlider from "./utils/ImageSlider";
 import { useToasts } from "react-toast-notifications";
 import PageHeader from "./utils/PageHeader";
 import PopularBrands from "./HomePageDetail/PopularBrands";
 import { localUrl, apiUrl } from "../config.json";
+
 
 const useStyles = makeStyles((them) => ({
   topImage: {
@@ -29,7 +30,6 @@ function Home() {
    * On page load send request to server to get most viewed products list
    */
   useEffect(() => {
-   
     const limit = 8;
     http.post(`${apiUrl}/products/getMostViews`, { limit }).then((response) => {
       if (response.data.success) {
@@ -44,7 +44,6 @@ function Home() {
 
   // Render products cards by mapping MostViewedProducts {Array}
   const renderCards = MostViewedProducts.map((prod, index) => {
-
     const shortTitle = (str) => {
       if (str.length > 25) {
         return str.substring(0, 25) + "...";
@@ -53,7 +52,7 @@ function Home() {
       }
     };
 
-    const prodTitle = shortTitle(prod.title)
+    const prodTitle = shortTitle(prod.title);
     return (
       <Col key={index} xs={12} md={8} lg={6}>
         <Card
@@ -90,21 +89,41 @@ function Home() {
       <div className="container">
         <PopularBrands />
 
-        <div className="row mt-4">
-          <div className="col-8">
-            <h2 className="mb-0 row-title">Most Popular</h2>
+        {MostViewedProducts.length === 0 ? (
+          <div className="row justify-content-center">
+            <div
+              style={{ height: "300px" }}
+              className="d-flex justify-content-center align-items-center"
+            >
+              <CircularProgress />
+            </div>
           </div>
-          <div className="col-4 d-flex align-items-end justify-content-end">
-            <Typography component="h5">
-              <Link className="see-all text-success" to="/products">
-                See All
-              </Link>
-            </Typography>
+        ) : (
+
+
+
+
+        <div>
+          <div className="row mt-4">
+            <div className="col-8">
+              <h2 className="mb-0 row-title">Most Popular</h2>
+            </div>
+            <div className="col-4 d-flex align-items-end justify-content-end">
+              <Typography component="h5">
+                <Link className="see-all text-success" to="/products">
+                  See All
+                </Link>
+              </Typography>
+            </div>
+          </div>
+          <div className="mt-2">
+            <Row gutter={[30, 16]}>{renderCards}</Row>
           </div>
         </div>
-        <div className="mt-2">
-          <Row gutter={[30, 16]}>{renderCards}</Row>
-        </div>
+  )}
+
+
+
       </div>
     </div>
   );
