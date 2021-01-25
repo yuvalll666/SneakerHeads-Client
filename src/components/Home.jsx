@@ -44,6 +44,16 @@ function Home() {
 
   // Render products cards by mapping MostViewedProducts {Array}
   const renderCards = MostViewedProducts.map((prod, index) => {
+
+    const shortTitle = (str) => {
+      if (str.length > 25) {
+        return str.substring(0, 25) + "...";
+      } else {
+        return str;
+      }
+    };
+
+    const prodTitle = shortTitle(prod.title)
     return (
       <Col key={index} xs={12} md={8} lg={6}>
         <Card
@@ -59,7 +69,7 @@ function Home() {
             </a>
           }
         >
-          <div className="card-title">{prod.title} </div>
+          <div className="card-title">{prodTitle} </div>
           <Meta description={`$${prod.price}`} />
         </Card>
       </Col>

@@ -172,6 +172,16 @@ function ProductsLandingPage() {
 
   // Render products cards by mapping Products {Array}
   const renderCards = Products.map((prod, index) => {
+    const shortTitle = (str) => {
+      if (str.length > 25) {
+        return str.substring(0, 25) + "...";
+      } else {
+        return str;
+      }
+    };
+
+    const prodTitle = shortTitle(prod.title)
+   
     return (
       <Col lg={6} md={8} xs={12} key={index}>
         <Card
@@ -184,7 +194,8 @@ function ProductsLandingPage() {
             </a>
           }
         >
-          <Meta title={prod.title} description={`$${prod.price}`} />
+          <div className="card-title">{prodTitle} </div>
+          <Meta description={`$${prod.price}`} />
         </Card>
       </Col>
     );

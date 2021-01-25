@@ -8,10 +8,10 @@ function Footer() {
       <div className="top-stripe-container col-12">
         <div className="container-fluid">
           <div className="row mt-4 d-flex justify-content-center">
-            <div className="col-4 sections">
+            <div className="col-lg-4 col-sm-12 sections">
               <nav className="footer-navbar">
                 <h5 className="section-headline">Collection</h5>
-                <div>
+                <div className="d-sm-flex justify-content-center">
                   <ul>
                     <li>
                       <Link className="links" to="/">
@@ -43,7 +43,7 @@ function Footer() {
               </nav>
             </div>
 
-            <div className="col-4 sections">
+            <div className="col-lg-4 col-sm-12 sections">
               <nav className="footer-navbar">
                 <h5 className="section-headline">Brands</h5>
                 <div>
@@ -78,14 +78,16 @@ function Footer() {
               </nav>
             </div>
 
-            <div className="col-4 sections">
+            <div className="col-lg-4 col-sm-12 sections">
               <div>
                 <h5 className="section-headline ">Contact Us</h5>
                 <div className="contact-us">
                   <h5>You can get us here</h5>
                   <strong>Tel: 054-2142-796</strong>
 
-                  <p><strong>Email:</strong> Yuval@gmail.com</p>
+                  <p>
+                    <strong>Email:</strong> azarya.yuval@gmail.com
+                  </p>
                 </div>
               </div>
             </div>

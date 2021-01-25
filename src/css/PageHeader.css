@@ -7,9 +7,20 @@
   justify-content: center;
 }
 
-.header-title{
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+.header-title {
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   font-size: 3em;
-
 }
 
+.example-site {
+  font-size: 1.5em;
+  display: flex;
+  margin: 0 auto;
+  font-weight: 600;
+}
+
+@media screen and (max-width: 1100px) {
+  .example-site {
+    display: none;
+  }
+}

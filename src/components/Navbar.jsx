@@ -2,6 +2,8 @@ import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import Badge from "@material-ui/core/Badge";
 import { userRole } from "../config.json";
+import { makeStyles } from "@material-ui/core";
+import "../css/PageHeader.css";
 const { NORMAL, ADMIN } = userRole;
 
 function Navbar({ user }) {
@@ -65,6 +67,11 @@ function Navbar({ user }) {
               </div>
             </li>
           </ul>
+
+          <span className="example-site">
+            Example Site Products Not For Sale!
+          </span>
+
           <ul className="navbar-nav ml-auto">
             {!user && (
               <React.Fragment>

@@ -12,6 +12,30 @@
   display: flex;
   align-items: center;
 }
+
+@media screen and (max-width: 576px) {
+  .footer-container {
+    height: 500px;
+  }
+  
+  .top-stripe-container {
+    height: 100%;
+  }
+  .footer-navbar ul {
+    margin-bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .section-headline {
+    text-align: center;
+  }
+  .contact-us {
+    text-align: center;
+  }
+}
+
 .lower-stripe-container {
   position: relative;
   width: 100%;
@@ -47,23 +71,23 @@
 .section-headline {
   color: rgb(216, 216, 216);
   font-size: 1.2em;
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  justify-content: center;
 }
 
-.sections{
+.sections {
   display: flex;
   justify-content: center;
 }
 
-.contact-us{
+.contact-us {
   padding: 0;
-  color:lightgrey;
+  color: lightgrey;
   letter-spacing: 0.8px;
-   
 }
 
-.contact-us h5{
+.contact-us h5 {
   font-size: 1.2em;
   color: white;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: "Courier New", Courier, monospace;
 }

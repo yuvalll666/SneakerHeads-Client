@@ -63,7 +63,6 @@ function Payments() {
     });
     // Get total sum of all products prices
     let reducedNum = arr.reduce((a, b) => a + b, 0);
-    console.log(products[0]);
 
     return (
       <TableRow key={index} className={index % 2 ? "bg-light" : "bg-white"}>
