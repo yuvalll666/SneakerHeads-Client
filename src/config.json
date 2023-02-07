@@ -1,5 +1,5 @@
 {
-  "apiUrl": "https://sneaker-heads-api.onrender.com",
+  "apiUrl": "https://sneaker-heads-api.onrender.com/api",
   "localUrl": "",
   "userRole": {
     "NORMAL": 0,
