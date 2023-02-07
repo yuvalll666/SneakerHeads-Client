@@ -1,5 +1,5 @@
 {
-  "apiUrl": "https://sneakerheadsfreshstart.herokuapp.com/api",
+  "apiUrl": "https://sneaker-heads-api.onrender.com",
   "localUrl": "",
   "userRole": {
     "NORMAL": 0,
